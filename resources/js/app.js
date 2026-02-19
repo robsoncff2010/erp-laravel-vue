@@ -1,22 +1,27 @@
-// import './bootstrap';
-
-// import Alpine from 'alpinejs';
-
-// window.Alpine = Alpine;
-
-// Alpine.start();
-
 import './bootstrap';
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
-// Importa um componente Vue de exemplo
-import ExampleComponent from './components/ExampleComponent.vue';
+import LoginForm from './components/auth/LoginForm.vue';
+import HomeForm from './components/home/HomeForm.vue';
+import Button from './components/ui/Button.vue';
+import Label from './components/ui/Label.vue';
+import Input from './components/ui/Input.vue';
+import Toast from 'vue-toastification'
+import 'vue-toastification/dist/index.css'
 
-// Cria a instância do Vue
 const app = createApp({});
+app.use(createPinia());
+app.component('login-form', LoginForm);
+app.component('home-form', HomeForm);
+app.component('BaseButton', Button);
+app.component('BaseLabel', Label);
+app.component('BaseInput', Input);
+app.use(Toast, {
+  position: 'top-right',
+  timeout: 3000,
+  closeOnClick: true,
+  pauseOnHover: true,
+})
 
-// Registra o componente globalmente
-app.component('example-component', ExampleComponent);
-
-// Monta o Vue dentro da div com id="app"
 app.mount('#app');

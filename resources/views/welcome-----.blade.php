@@ -1,3 +1,11 @@
+<x-guest-layout>
+    <div id="app">
+        <welcome-form></welcome-form>
+    </div>
+</x-guest-layout>
+
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
