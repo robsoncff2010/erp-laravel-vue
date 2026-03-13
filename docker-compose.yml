@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: teste-adriano-cobuccio-laravel-app
+    container_name: erp-laravel-app
     volumes:
       - .:/var/www/html
     networks:
@@ -11,7 +11,7 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: teste-adriano-cobuccio-laravel-nginx
+    container_name: erp-laravel-nginx
     ports:
       - "8000:80"
     volumes:
@@ -24,10 +24,10 @@ services:
 
   mysql:
     image: mysql:8.0
-    container_name: teste-adriano-cobuccio-laravel-mysql
+    container_name: erp-laravel-mysql
     restart: always
     environment:
-      MYSQL_DATABASE: teste_adriano_cobuccio_laravel
+      MYSQL_DATABASE: erp_laravel
       MYSQL_USER: laravel
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: root
@@ -40,7 +40,7 @@ services:
 
   vite:
     image: node:20
-    container_name: teste-adriano-cobuccio-laravel-vite
+    container_name: erp-laravel-vite
     working_dir: /var/www/html
     volumes:
       - .:/var/www/html
