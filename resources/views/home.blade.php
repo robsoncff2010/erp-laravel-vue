@@ -1,5 +1,4 @@
 <x-guest-layout>
-    <div id="app">
-        <home-form></home-form>
-    </div>
+    <div id="app"></div>
+    @vite('resources/js/pages/home/home.js')
 </x-guest-layout>
