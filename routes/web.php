@@ -8,14 +8,16 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PreferencesController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return view('home');
+    return Inertia::render('home/Home');
 })->name('home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('guest')->group(function () {
@@ -52,5 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+
+Route::post('/preferences/theme', [PreferencesController::class, 'switchTheme'])->name('preferences.theme');
+Route::post('/preferences/language', [PreferencesController::class, 'switchLanguage'])->name('preferences.language');
 
 require __DIR__.'/auth.php';

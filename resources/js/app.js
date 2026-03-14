@@ -1,17 +1,20 @@
-import './bootstrap';
-import { createPinia } from 'pinia';
-import Toast from 'vue-toastification';
-import 'vue-toastification/dist/index.css';
-import registerComponents from './plugins/components';
+import { createApp, h } from 'vue'
+import { createInertiaApp } from '@inertiajs/vue3'
+import './bootstrap'
+import { setupApp } from './setupApp'
+import { i18n } from './i18n'
 
-export function setupApp(app) {
-  app.use(createPinia());
-  app.use(Toast, {
-    position: 'top-right',
-    timeout: 3000,
-    closeOnClick: true,
-    pauseOnHover: true,
-  });
+createInertiaApp({
+  resolve: name => {
+    const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+    return pages[`./Pages/${name}.vue`].default
+  },
+  setup({ el, App, props, plugin }) {
+    const app = createApp({ render: () => h(App, props) })
 
-  registerComponents(app);
-}
+    app.use(plugin)
+    setupApp(app)
+    app.use(i18n)
+    app.mount(el)
+  },
+})
