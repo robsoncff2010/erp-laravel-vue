@@ -8,23 +8,23 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+  import { computed } from 'vue';
 
-const props = defineProps({
-  for: { type: String, required: true },
-  size: { type: String, default: 'sm' }
-});
+  const props = defineProps({
+    for: { type: String, required: true },
+    size: { type: String, default: 'sm' }
+  });
 
-const sizeClass = computed(() => {
-  switch (props.size) {
-    case 'lg':
-      return 'text-lg'
-    case 'xl':
-      return 'text-xl'
-    case '2xl':
-      return 'text-2xl'
-    default:
-      return 'text-sm'
-  }
-})
+  const sizeClass = computed(() => {
+    switch (props.size) {
+      case 'lg':
+        return 'text-lg'
+      case 'xl':
+        return 'text-xl'
+      case '2xl':
+        return 'text-2xl'
+      default:
+        return 'text-sm'
+    }
+  })
 </script>

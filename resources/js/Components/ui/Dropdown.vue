@@ -1,8 +1,8 @@
 <template>
-  <div class="relative inline-block text-left">
+  <div ref="dropdownRef" class="relative inline-block text-left">
     <button
       @click="open = !open"
-      class="inline-flex justify-between w-48 rounded-lg border border-gray-300
+      class="inline-flex justify-between w-full rounded-lg border border-gray-300
              bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium
              text-gray-700 dark:text-gray-300 shadow-sm focus:outline-none"
     >
@@ -30,25 +30,39 @@
 </template>
 
 <script setup>
-    import { ref, computed } from 'vue'
+  import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
-    const props = defineProps({
-        modelValue: String,
-        options: { type: Array, required: true }
-    })
+  const props = defineProps({
+    modelValue: String,
+    options: { type: Array, required: true }
+  })
 
-    const emit = defineEmits(['update:modelValue'])
-    const open = ref(false)
+  const emit        = defineEmits(['update:modelValue'])
+  const open        = ref(false)
+  const dropdownRef = ref(null)
 
-    const selectedLabel = computed(() => {
-        const opt           = props.options.find(o => o.value === props.modelValue)
-        return opt ? opt.label : 'Selecione...'
-    })
+  const selectedLabel = computed(() => {
+    const opt = props.options.find(o => o.value === props.modelValue)
+    return opt ? opt.label : 'Selecione...'
+  })
 
-    function select(option) {
-        emit('update:modelValue', option.value)
-        open.value = false
+  function select(option) {
+    emit('update:modelValue', option.value)
+    open.value = false
+  }
+
+  // fecha se clicar fora
+  function handleClickOutside(event) {
+    if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
+      open.value = false
     }
+  }
+
+  onMounted(() => {
+    document.addEventListener('click', handleClickOutside)
+  })
+
+  onBeforeUnmount(() => {
+    document.removeEventListener('click', handleClickOutside)
+  })
 </script>
-
-

@@ -1,6 +1,6 @@
 <script setup>
   import { ref } from 'vue'
-  import { switchTheme, switchLanguage } from '../../services/preferences.js'
+  import { switchTheme, switchLanguage } from '../../../services/preferences.js'
   import { useToast } from 'vue-toastification'
   import { useI18n } from 'vue-i18n'
 

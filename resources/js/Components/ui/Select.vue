@@ -14,8 +14,8 @@
 </template>
 
 <script setup>
-defineProps({
-  modelValue: { type: String, default: '' }
-})
-defineEmits(['update:modelValue'])
+  defineProps({
+    modelValue: { type: String, default: '' }
+  })
+  defineEmits(['update:modelValue'])
 </script>

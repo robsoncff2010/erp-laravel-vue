@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
     <form @submit.prevent="submit">
       <div class="mb-4">
         <BaseLabel for="email">E-mail</BaseLabel>
@@ -10,16 +10,6 @@
         <BaseLabel for="password">Senha</BaseLabel>
         <BaseInput v-model="password" id="password" type="password" autocomplete="current-password"
           required />
-      </div>
-
-      <div class="flex items-center justify-between mb-4">
-        <BaseLabel for="remember" class="flex items-center text-sm">
-          <BaseInput id="remember" type="checkbox" autocomplete="off"/>
-          <span class="ml-2">Lembrar-me</span>
-        </BaseLabel>
-        <a href="/forgot-password" class="text-sm text-indigo-400 hover:text-indigo-300">
-          Não lembro a senha?
-        </a>
       </div>
       <div class="flex items-center justify-end gap-4">
         <BaseButton type="submit" variant="secondary">

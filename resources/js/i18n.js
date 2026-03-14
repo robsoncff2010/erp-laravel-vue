@@ -9,6 +9,7 @@ const messages = {
     language: 'Language',
     portuguese: 'Portuguese',
     home: {
+        title_project: 'ERP project with Laravel(12) and Vue(pinia, vite, Inertia) - Studies',
         login: 'Login',
         register: 'Register',
     }
@@ -22,6 +23,7 @@ const messages = {
     language: 'Idioma',
     portuguese: 'Português',
     home: {
+        title_project: 'Projeto de ERP com Laravel(12) e Vue(pinia, vite, Inertia) - Estudos',
         login: 'Entrar',
         register: 'Registrar',
     }
